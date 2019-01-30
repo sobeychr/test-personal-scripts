@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Core;
+namespace App;
 
 use Exception;
 
-use App\Core\CErrorHandler;
+use App\Error\CErrorHandler;
 use App\Request\CRequest;
 
-require_once __DIR__ . '/../functions.php';
+require_once __DIR__ . '/functions.php';
 
 class CCore
 {
@@ -119,7 +119,7 @@ class CCore
 
     private function autoLoader(string $class):void
     {
-        $path = __DIR__ . '/../../' . $class . '.php';
+        $path = __DIR__ . '/../' . $class . '.php';
         $logsAutoload[] = [
             'searching' => $class,
             'path' => $path,

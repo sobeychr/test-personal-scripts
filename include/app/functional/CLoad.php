@@ -4,20 +4,22 @@ namespace App\Functional;
 
 use Exception;
 
-use App\Core\CCore;
+use App\CCore;
+use App\Error\CErrorJson;
+use App\Error\CErrorLoad;
 
 abstract class CLoad
 {
     static public function loadLocal(string $path):string
     {
         if(!file_exists($path) || is_dir($path)) {
-            throw new Exception('[CLoad] File not found - '.$path);
+            throw new CErrorLoad($path, 'File not found');
         }
 
         $file = file_get_contents($path, false, self::getContextLocal());
 
         if($file === false) {
-            throw new Exception('[CLoad] Unable fetch file content - '.$path);
+            throw new CErrorLoad($path, 'Unable load content');
         }
 
         return $file;
@@ -29,7 +31,7 @@ abstract class CLoad
         $array = json_decode($string, true);
 
         if(!is_array($array)) {
-            throw new Exception('[CLoad] Unable decode JSON - '.$path);
+            throw new CErrorJson($path, $string);
         }
 
         return [];

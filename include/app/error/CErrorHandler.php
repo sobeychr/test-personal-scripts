@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Core;
+namespace App\Error;
 
 use Throwable;
 
-use App\Core\CCore;
+use App\CCore;
 
 class CErrorHandler
 {

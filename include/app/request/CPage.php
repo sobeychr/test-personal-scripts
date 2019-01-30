@@ -2,7 +2,7 @@
 
 namespace App\Request;
 
-use App\Core\CCore;
+use App\CCore;
 use App\Request\CRequest;
 
 class CPage

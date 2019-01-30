@@ -2,7 +2,7 @@
 
 namespace App\Request;
 
-use App\Core\CCore;
+use App\CCore;
 
 class CSetup
 {
