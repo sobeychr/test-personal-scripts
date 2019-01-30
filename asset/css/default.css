@@ -1,0 +1,70 @@
+html, body {
+  background: #131313;
+  color: #DDD;
+  font-family: "Arial", sans-serif; }
+
+h1, h2, h3, h4, h5, h6,
+p {
+  margin: 0;
+  padding: 0; }
+
+a {
+  color: #006971;
+  text-decoration: none; }
+  a:hover {
+    color: #2EFFE6; }
+
+button {
+  background: #000;
+  border: 2px solid #ABA500;
+  color: #ABA500;
+  cursor: pointer;
+  display: inline-block;
+  padding: 3px 5px; }
+  button:focus {
+    outline: none; }
+  button:hover {
+    border-color: #FFEB3B;
+    color: #FFEB3B;
+    background: #262626; }
+
+input, textarea {
+  background: #303030;
+  padding: 5px;
+  color: #BBB;
+  border: 2px solid #BBB; }
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #717171;
+    font-style: italic;
+    text-indent: 3px; }
+  input:focus, textarea:focus {
+    color: #7B9DD4;
+    border-color: #AAA; }
+
+pre {
+  background: #303030;
+  border-left: 5px solid #005AFF;
+  border-right: 2px solid #005AFF;
+  font: 12px "Courier New", sans-serif;
+  margin: 5px 0;
+  padding: 5px 5px 5px 10px; }
+
+.main {
+  margin: 0 auto; }
+
+.g-scroll0::-webkit-scrollbar {
+  width: 7px;
+  padding: 15px; }
+
+.g-scroll0::-webkit-scrollbar-track {
+  border-radius: 7px;
+  background: #387451; }
+
+.g-scroll0::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background: #56D8A4; }
+
+.g-scroll0::-webkit-scrollbar-thumb:hover {
+  background: #2EFFE6; }
+
+/*# sourceMappingURL=default.css.map */

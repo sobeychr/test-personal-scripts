@@ -1,0 +1,58 @@
+.main {
+  margin: 50px auto 0;
+  max-width: 850px;
+  width: 80%; }
+  .main section:nth-child(n + 2) {
+    margin-top: 20px; }
+
+.commands {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0; }
+  .commands li {
+    display: inline-block;
+    margin: 10px 0 0 10px; }
+    .commands li input {
+      width: 190px; }
+
+.search-input {
+  margin: 10px 0 0 10px;
+  max-width: 500px;
+  width: 100%; }
+
+.chost {
+  margin-top: 10px;
+  padding: 10px; }
+  .chost:hover {
+    background: #333; }
+  .chost h3 {
+    color: #0066FF;
+    cursor: pointer; }
+    .chost h3:hover {
+      color: #00A1FF; }
+  .chost__path {
+    margin: 10px 0; }
+    .chost__path:first-child {
+      margin-left: 20px; }
+
+.chost__subtitle {
+  padding: 3px;
+  background: #131313; }
+  .chost__subtitle, .chost__subtitle__text {
+    margin: 5px 0 0; }
+
+.chost__link {
+  display: block; }
+
+.chost__content {
+  display: none;
+  opacity: 0;
+  transition: opacity .5s linear 3s; }
+  .chost__content--open {
+    display: block;
+    opacity: 1; }
+
+.hidden {
+  display: none; }
+
+/*# sourceMappingURL=hosts.css.map */

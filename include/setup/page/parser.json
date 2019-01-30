@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - Parser",
+    "icon": "parser",
+    "css": [
+        "default",
+        "page/parser"
+    ],
+    "js": [
+        "jquery",
+        "page/parser"
+    ]
+}

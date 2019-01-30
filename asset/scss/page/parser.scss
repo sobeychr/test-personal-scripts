@@ -1,0 +1,105 @@
+@import 'global';
+
+$btnOffColor0: #FF6500;
+$btnOffColor1: #FFA83E;
+
+$btnOnColor0: #0A0;
+$btnOnColor1: #0F0;
+
+.aside, .main {
+    box-shadow: 0 0 3px $colorWhite2;
+    padding: 10px;
+}
+
+.aside {
+    background: #131313;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 170px;
+
+    div,
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    div:nth-child(n + 2) {
+        margin-top: 10px;
+    }
+
+    button {
+        margin: 7px 0 0 7px;
+        text-transform: uppercase;
+
+        &.off {
+            border-color: $btnOffColor0;
+            color: $btnOffColor0;
+
+            &:hover {
+                border-color: $btnOffColor1;
+                color: $btnOffColor1;
+            }
+        }
+
+        &.on {
+            border-color: $btnOnColor0;
+            color: $btnOnColor0;
+
+            &:hover {
+                border-color: $btnOnColor1;
+                color: $btnOnColor1;
+            }
+        }
+    }
+}
+
+.main {
+    margin-top: 10%;
+    max-width: 1200px;
+    transition: width .2s linear;
+    width: 90%;
+
+    h1,
+    h2 {
+        margin: 0 0 5px 0;
+        padding: 0;
+    }
+
+    h2 {
+        color: $colorWhite2;
+        text-indent: 20px;
+        text-transform: uppercase;
+    }
+
+    article:nth-child(n + 3) {
+        margin-top: 30px;
+    }
+
+    @media (min-width: 1330px) and (max-width: 1620px) {
+        width: 70%;
+    }
+    @media (max-width: 1329px) {
+        margin-right: 0;
+    }
+    @media (min-width: 1060px) and (max-width: 1329px) {
+        width: 80%;
+    }
+    @media (max-width: 1059px) {
+        width: 70%;
+    }
+}
+
+#input {
+    height: 170px;
+    width: 100%;
+}
+
+.footer {
+    opacity: 0;
+    transition: opacity .5s linear;
+
+    &--show {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "title": "Localhost - Index",
+    "icon": "sharka",
+    "css": [
+        "default",
+        "page/index"
+    ],
+    "js": [
+    ]
+}

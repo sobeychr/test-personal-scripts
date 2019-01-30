@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - Hosts",
+    "icon": "hosts",
+    "css": [
+        "default",
+        "page/hosts"
+    ],
+    "js": [
+        "jquery",
+        "page/hosts"
+    ]
+}

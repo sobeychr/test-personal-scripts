@@ -1,0 +1,71 @@
+.aside, .main {
+  box-shadow: 0 0 3px #AAA;
+  padding: 10px; }
+
+.aside {
+  background: #131313;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 170px; }
+  .aside div,
+  .aside p {
+    margin: 0;
+    padding: 0; }
+  .aside div:nth-child(n + 2) {
+    margin-top: 10px; }
+  .aside button {
+    margin: 7px 0 0 7px;
+    text-transform: uppercase; }
+    .aside button.off {
+      border-color: #FF6500;
+      color: #FF6500; }
+      .aside button.off:hover {
+        border-color: #FFA83E;
+        color: #FFA83E; }
+    .aside button.on {
+      border-color: #0A0;
+      color: #0A0; }
+      .aside button.on:hover {
+        border-color: #0F0;
+        color: #0F0; }
+
+.main {
+  margin-top: 10%;
+  max-width: 1200px;
+  transition: width .2s linear;
+  width: 90%; }
+  .main h1,
+  .main h2 {
+    margin: 0 0 5px 0;
+    padding: 0; }
+  .main h2 {
+    color: #AAA;
+    text-indent: 20px;
+    text-transform: uppercase; }
+  .main article:nth-child(n + 3) {
+    margin-top: 30px; }
+  @media (min-width: 1330px) and (max-width: 1620px) {
+    .main {
+      width: 70%; } }
+  @media (max-width: 1329px) {
+    .main {
+      margin-right: 0; } }
+  @media (min-width: 1060px) and (max-width: 1329px) {
+    .main {
+      width: 80%; } }
+  @media (max-width: 1059px) {
+    .main {
+      width: 70%; } }
+
+#input {
+  height: 170px;
+  width: 100%; }
+
+.footer {
+  opacity: 0;
+  transition: opacity .5s linear; }
+  .footer--show {
+    opacity: 1; }
+
+/*# sourceMappingURL=parser.css.map */
