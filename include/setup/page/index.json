@@ -1,5 +1,5 @@
 {
-    "layout": "default",
+    "showHeader": false,
 
     "title": "Localhost - Index",
     "icon": "sharka",

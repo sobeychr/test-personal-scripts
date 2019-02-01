@@ -21,7 +21,6 @@ $buttons = CCore::config(['page', 'parser']);
 </aside>
 
 <main class='main'>
-    <h1>Parser</h1>
     <article>
         <h2>input</h2>
         <textarea id='input'></textarea>

@@ -1,6 +1,4 @@
 {
-    "layout": "default",
-    
     "title": "Localhost - Parser",
     "icon": "parser",
     "css": [

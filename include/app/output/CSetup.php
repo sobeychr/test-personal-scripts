@@ -23,9 +23,14 @@ class CSetup
     public function getLayoutJson():array
     {
         if(!$this->layoutJson) {
-            $layout = $this->getLayoutName();
             $path  = CCore::config(['path','setupLayout']);
-            $this->layoutJson = CLoad::loadLocalJson($path . $layout . '.json');
+            $defaultJson = CLoad::loadLocalJson($path . '_default.json');
+
+            $layout = $this->getLayoutName();
+            $this->layoutJson = array_merge(
+                $defaultJson,
+                CLoad::loadLocalJson($path . $layout . '.json')
+            );
         }
         return $this->layoutJson;
     }
@@ -43,9 +48,13 @@ class CSetup
     {
         if(!$this->pageJson) {
             $path = CCore::config(['path','setupPage']);
-            $this->pageJson = CLoad::loadLocalJson($path . $this->pageName . '.json');
+            $defaultJson = CLoad::loadLocalJson($path . '_default.json');
+
+            $this->pageJson = array_merge(
+                $defaultJson,
+                CLoad::loadLocalJson($path . $this->pageName . '.json')
+            );
         }
-        
         return $this->pageJson;
     }
 }

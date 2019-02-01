@@ -16,7 +16,6 @@ $productsHtml = array_map(function(CHost $v):string {
 }, $products);
 ?>
 <main class='main'>
-    <h1>Localhost - Hosts</h1>
     <section>
         <h2>Commands</h2>
         <ul class="commands">

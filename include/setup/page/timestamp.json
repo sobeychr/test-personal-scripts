@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - Timestamp",
+    "icon": "timestamp",
+    "css": [
+        "default",
+        "page/timestamp"
+    ],
+    "js": [
+        "jquery",
+        "page/timestamp"
+    ]
+}
