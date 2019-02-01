@@ -6,9 +6,11 @@
         <?=$this->js;?>
     </head>
     <?php if($this->showHeader): ?>
-        <header>
-            <h1><?=$this->title;?></h1>
-            <a href='/'>&lt;</a>
+        <header class='dheader'>
+            <h1 class='dheader__title'>
+                <a class='dheader__link' href='/'>&lt;</a>
+                <?=$this->title;?>
+            </h1>
         </header>
     <?php endif; ?>
     <body>

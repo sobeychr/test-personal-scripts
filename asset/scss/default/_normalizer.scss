@@ -1,0 +1,65 @@
+html, body {
+    background: $bgBlack1;
+    color: #DDD;
+    font-family: $fontDefault;
+}
+
+h1, h2, h3, h4, h5, h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: $linkColor0;
+    text-decoration: none;
+
+    &:hover {
+        color: $linkColor1;
+    }
+}
+
+button {
+    background: $bgBlack0;
+    border: 2px solid $buttonColor0;
+    color: $buttonColor0;
+    cursor: pointer;
+    display: inline-block;
+    padding: 3px 5px;
+
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+    border-color: $buttonColor1;
+    color: $buttonColor1;
+    background: $bgBlack2;
+    }
+}
+
+input, textarea {
+    background: $bgBlack3;
+    padding: 5px;
+    color: $colorWhite1;
+    border: 2px solid $colorWhite1;
+
+    &::-webkit-input-placeholder {
+        color: $inputPlaceholder;
+        font-style: italic;
+        text-indent: 3px;
+    }
+
+    &:focus {
+        color: $inputFocus;
+        border-color: $colorWhite2;
+    }
+}
+
+pre {
+    background: $bgBlack3;
+    border-left: 5px $preBorder;
+    border-right: 2px $preBorder;
+    font: 12px $fontPre;
+    margin: 5px 0;
+    padding: 5px 5px 5px 10px;
+}

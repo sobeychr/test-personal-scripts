@@ -1,0 +1,27 @@
+.dheader {
+    &__title {
+        text-align: center;
+    }
+}
+
+.main {
+    margin: 0 auto;
+}
+
+.g-scroll0 {
+    &::-webkit-scrollbar {
+        width: 7px;
+        padding: 15px;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 7px;
+        background: #387451;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 7px;
+        background: #56D8A4;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #2EFFE6;
+    }
+}
