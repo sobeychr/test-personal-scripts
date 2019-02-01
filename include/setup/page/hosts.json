@@ -1,4 +1,6 @@
 {
+    "layout": "default",
+    
     "title": "Localhost - Hosts",
     "icon": "hosts",
     "css": [

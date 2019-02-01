@@ -1,4 +1,6 @@
 {
+    "layout": "default",
+
     "title": "Localhost - Index",
     "icon": "sharka",
     "css": [

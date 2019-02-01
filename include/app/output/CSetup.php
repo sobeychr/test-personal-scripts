@@ -7,26 +7,45 @@ use App\Functional\CLoad;
 
 class CSetup
 {
-    public const OMIT = ['css', 'js'];
+    public const OMIT = ['layout', 'css', 'js'];
 
-    protected $layout = '';
-    protected $page   = '';
+    protected $layoutJson = false;
+    protected $layoutName = '';
 
-    public function __construct(string $layout, string $page)
+    protected $pageJson = false;
+    protected $pageName = '';
+
+    public function __construct(string $page)
     {
-        $this->layout = $layout;
-        $this->page   = $page;
+        $this->pageName = $page;
     }
 
-    public function getLayout():array
+    public function getLayoutJson():array
     {
-        $path = CCore::config(['path','setupLayout']);
-        return CLoad::loadLocalJson($path . $this->layout . '.json');
+        if(!$this->layoutJson) {
+            $layout = $this->getLayoutName();
+            $path  = CCore::config(['path','setupLayout']);
+            $this->layoutJson = CLoad::loadLocalJson($path . $layout . '.json');
+        }
+        return $this->layoutJson;
     }
 
-    public function getPage():array
+    public function getLayoutName():string
     {
-        $path = CCore::config(['path','setupPage']);
-        return CLoad::loadLocalJson($path . $this->page . '.json');
+        if(!$this->layoutName) {
+            $json = $this->getPageJson();
+            $this->layoutName = $json['layout'] ?? CCore::config(['page', 'default', 'layout']);
+        }
+        return $this->layoutName;
+    }
+
+    public function getPageJson():array
+    {
+        if(!$this->pageJson) {
+            $path = CCore::config(['path','setupPage']);
+            $this->pageJson = CLoad::loadLocalJson($path . $this->pageName . '.json');
+        }
+        
+        return $this->pageJson;
     }
 }

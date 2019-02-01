@@ -38,6 +38,10 @@ class CPage
     public function renderByRequest():void
     {
         $this->setPageByRequest();
+
+        $this->setup = new CSetup($this->page);
+        $this->layout = $this->setup->getLayoutName();
+
         list($pathLayout, $pathPage) = $this->getRequestPaths();
 
         if(!file_exists($pathLayout) || !file_exists($pathPage)) {
@@ -52,26 +56,13 @@ class CPage
             exit;
         }
 
-        list($setupLayout, $setupPage) = $this->getSetup();
+        $setupLayout = $this->setup->getLayoutJson();
+        $setupPage   = $this->setup->getPageJson();
 
         $this->view = new CView($pathLayout, $pathPage);
-        $this->view->css = $this->compileAssets($setupPage['css'] ?? [], true);
-        $this->view->js  = $this->compileAssets($setupPage['js']  ?? [], false);
-
-        foreach($setupLayout as $key=>$entry)
-        {
-            if(!in_array($key, CSetup::OMIT)) {
-                $this->view->$key = $entry;
-            }
-        }
-        foreach($setupPage as $key=>$entry)
-        {
-            if(!in_array($key, CSetup::OMIT)) {
-                $this->view->$key = $entry;
-            }
-        }
-        
+        $this->view->setup($this->setup);
         $html = $this->view->render();
+        
         die($html);
     }
 
@@ -79,26 +70,9 @@ class CPage
     {
         $newPage = substr($this->core->request->getUri(), 1);
         if(!$newPage) {
-            $newPage = 'index';
+            $newPage = CCore::config(['page', 'default', 'page']);
         }
         $this->page = $newPage;
-    }
-
-    protected function compileAssets(array $list, bool $isCss=true):string
-    {
-        $folder = CCore::config([
-            'path',
-            $isCss ? 'css' : 'js'
-        ]);
-        $code = $isCss
-            ? '<link rel="stylesheet" type="text/css" href="'.$folder.'{{link}}.css">'
-            : '<script src="'.$folder.'{{link}}.js"></script>';
-
-        $return = array_map(function($entry) use ($code) {
-            return fReplace($code, ['{{link}}' => $entry]);
-        }, $list);
-
-        return implode("\n", $return);
     }
 
     protected function getRequestPaths():array

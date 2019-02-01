@@ -10,7 +10,54 @@ class CPageConfig extends BaseConfig
 
     public function __construct()
     {
+        $this->setDefault();
+
+        $this->setHost();
+        $this->setIndex();
         $this->setParser();
+    }
+
+    private function setDefault():void
+    {
+        $config = [
+            'default' => [
+                'layout' => 'default',
+                'page'   => 'index',
+            ],
+        ];
+
+        $this->setConfig($config);
+    }
+
+    private function setHost():void
+    {
+        $config = [
+            'host' => [
+                'commands' => [
+                    'docker ps -a',
+                    'docker-compose up -d',
+                    'docker-compose up -d --build',
+                    'docker-compose down',
+                ],
+            ],
+        ];
+
+        $this->setConfig($config);
+    }
+
+    private function setIndex():void
+    {
+        $config = [
+            'index' => [
+                'links' => [
+                    'hosts',
+                    'parser',
+                    'timestamp',
+                ],
+            ],
+        ];
+
+        $this->setConfig($config);
     }
 
     private function setParser():void

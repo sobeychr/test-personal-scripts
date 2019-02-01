@@ -2,7 +2,8 @@
 
 namespace App\Output;
 
-// use CCore;
+use App\CCore;
+use App\Output\CSetup;
 
 class CView
 {
@@ -19,6 +20,23 @@ class CView
         $this->pathPage   = $pathPage;
     }
 
+    protected function compileAssets(array $list, bool $isCss=true):string
+    {
+        $folder = CCore::config([
+            'path',
+            $isCss ? 'css' : 'js'
+        ]);
+        $code = $isCss
+            ? '<link rel="stylesheet" type="text/css" href="'.$folder.'{{link}}.css">'
+            : '<script src="'.$folder.'{{link}}.js"></script>';
+
+        $return = array_map(function($entry) use ($code) {
+            return fReplace($code, ['{{link}}' => $entry]);
+        }, $list);
+
+        return implode("\n", $return);
+    }
+
     public function render():string
     {
         ob_start();
@@ -32,6 +50,28 @@ class CView
         ob_end_clean();
 
         return $html;
+    }
+
+    public function setup(CSetup $csetup):void
+    {
+        $setupLayout = $csetup->getLayoutJson();
+        $setupPage   = $csetup->getPageJson();
+
+        $this->css = $this->compileAssets($setupPage['css'] ?? [], true);
+        $this->js  = $this->compileAssets($setupPage['js']  ?? [], false);
+
+        foreach($setupLayout as $key=>$entry)
+        {
+            if(!in_array($key, CSetup::OMIT)) {
+                $this->$key = $entry;
+            }
+        }
+        foreach($setupPage as $key=>$entry)
+        {
+            if(!in_array($key, CSetup::OMIT)) {
+                $this->$key = $entry;
+            }
+        }
     }
 
     public function __set(string $name, $value):void

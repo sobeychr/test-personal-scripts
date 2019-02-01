@@ -5,5 +5,7 @@
         <?=$this->css;?>
         <?=$this->js;?>
     </head>
-    <body><?=$this->body;?></body>
+    <body>
+        <?=$this->body;?>
+    </body>
 </html>

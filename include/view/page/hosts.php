@@ -1,14 +1,10 @@
 <?php
 
+use App\CCore;
 use Component\CHost;
 
 // List of quick commands
-$commands = array(
-    'docker ps -a',
-    'docker-compose up -d',
-    'docker-compose up -d --build',
-    'docker-compose down',
-);
+$commands = CCore::config(['page', 'host', 'commands']);
 $commandsHtml = array_map(function(string $v):string {
     return '<li><input type="text" readonly value="' . $v . '"/></li>';
 }, $commands);

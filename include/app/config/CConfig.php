@@ -14,6 +14,13 @@ class CConfig
 
     protected function setConfig(array $data):void
     {
-        $this->config[ $this->name ] = $data;
+        $arr = &$this->config[ $this->name ];
+        if(!is_array($arr)) {
+            $arr = [];
+        }
+        $arr = array_merge(
+            $arr,
+            $data
+        );
     }
 }
