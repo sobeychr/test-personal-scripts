@@ -16,11 +16,11 @@ class CPathConfig extends BaseConfig
     private function setPaths():void
     {
         $config = [
-            'ajax'  => 'ajax/',
-            'css'   => 'asset/css/',
-            'js'    => 'asset/js/',
-            'icon'  => 'asset/icon/',
-            'image' => 'asset/image/',
+            'ajax'  => '/ajax/',
+            'css'   => '/asset/css/',
+            'js'    => '/asset/js/',
+            'icon'  => '/asset/icon/',
+            'image' => '/asset/image/',
 
             'setup'       => 'include/setup/',
             'setupLayout' => 'include/setup/layout/',

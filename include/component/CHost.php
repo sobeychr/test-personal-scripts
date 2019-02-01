@@ -2,7 +2,7 @@
 
 namespace Component;
 
-use App\CTemplate;
+use App\Output\CTemplate;
 
 class CHost
 {

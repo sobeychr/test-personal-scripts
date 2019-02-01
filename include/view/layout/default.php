@@ -1,9 +1,9 @@
 <html>
     <head>
-        <title><?=$title;?></title>
-        <link rel='icon' href='/asset/icon/sharka.png'>
-        <?=$css;?>
-        <?=$js;?>
+        <title><?=$this->title;?></title>
+        <link rel='icon' href='/asset/icon/<?=$this->icon?>.png'>
+        <?=$this->css;?>
+        <?=$this->js;?>
     </head>
-    <body><?=$body;?></body>
+    <body><?=$this->body;?></body>
 </html>

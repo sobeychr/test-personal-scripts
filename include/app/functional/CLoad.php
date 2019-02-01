@@ -34,7 +34,7 @@ abstract class CLoad
             throw new CErrorJson($path, $string);
         }
 
-        return [];
+        return $array;
     }
 
     static private $contextLocal = false;

@@ -2,10 +2,9 @@
 
 namespace App;
 
-use Exception;
-
+use App\Error\CErrorCore;
 use App\Error\CErrorHandler;
-use App\Request\CRequest;
+use App\Functional\CRequest;
 
 require_once __DIR__ . '/functions.php';
 
@@ -35,6 +34,8 @@ class CCore
     protected $isJson = false;
     protected $isText = true;
 
+    /** @var \App\error\CErrorHandler */
+    protected $error = false;
     /** @var \App\Request\CRequest */
     protected $request = false;
 
@@ -47,13 +48,13 @@ class CCore
     public function __get($propertyName)
     {
         if(!is_string($propertyName)) {
-            throw new Exception('[CCore] Unable to get non-string property - '.$propertyName);
+            throw new CErrorCore('Unable to get non-string property - '.$propertyName);
         }
         if(property_exists($this, $propertyName)) {
             return $this->$propertyName;
         }
 
-        throw new Exception('[CCore] Unable to get CCore property $this->'.$propertyName);
+        throw new CErrorCore('Unable to get CCore property $this->'.$propertyName);
     }
 
     public function asHtml():void
@@ -86,10 +87,10 @@ class CCore
         error_reporting(E_ALL);
         spl_autoload_register([$this, 'autoLoader']);
 
-        $error = new CErrorHandler($this);
+        $this->error = new CErrorHandler($this);
 
-        set_error_handler([$error, 'error'], E_ALL);
-        set_exception_handler([$error, 'exception']);
+        set_error_handler([$this->error, 'error'], E_ALL);
+        set_exception_handler([$this->error, 'exception']);
 
         $this->request = new CRequest();
     }
@@ -120,13 +121,9 @@ class CCore
     private function autoLoader(string $class):void
     {
         $path = __DIR__ . '/../' . $class . '.php';
-        $logsAutoload[] = [
-            'searching' => $class,
-            'path' => $path,
-        ];
 
         if(!file_exists($path)) {
-            throw new \Exception('Unable to find class path '.$class);
+            throw new CErrorCore('Unable to find class path - ' . $class . ' - ' . $path);
         }
 
         require_once $path;

@@ -1,34 +1,7 @@
 <?php
-$buttons = [
-    'Char Codes' => [
-        'charCodes',
-        ['on',  'on'],
-        ['off', 'off'],
-    ],
-    'Base 64' => [
-        'base64Encode',
-        ['on',  'on'],
-        ['off', 'off'],
-    ],
-    'JSON' => [
-        'jsonParse',
-        ['on',  'pretty'],
-        ['off', 'minify'],
-    ],
-    'URL' => [
-        'urlParse',
-        ['on',  'encode'],
-        ['off', 'decode'],
-    ],
-    'Cookie' => [
-        'cookieParse',
-        ['off', 'decode'],
-    ],
-    'GET parameter' => [
-        'getParse',
-        ['off', 'decode'],
-    ],
-];
+use App\CCore;
+
+$buttons = CCore::config(['page', 'parser']);
 ?>
 <aside class='aside'>
     <?php foreach($buttons as $label=>$configs) :

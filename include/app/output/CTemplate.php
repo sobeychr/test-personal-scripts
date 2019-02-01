@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Functional;
+namespace App\Output;
 
 abstract class CTemplate
 {
