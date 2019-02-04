@@ -8,6 +8,7 @@ module.exports = grunt => {
 
     // Loads modules
     const module = {
+            'cssmin': 'grunt-contrib-cssmin',
             'sass'  : 'grunt-sass',
             'watch' : 'grunt-contrib-watch'
         };

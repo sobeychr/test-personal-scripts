@@ -10,7 +10,7 @@ module.exports = grunt => {
                 name  = rootname + ucFirst(label);
             if(typeof(value) === 'string' || typeof(value) === 'number') {
                 grunt.config.set(name, value);
-                //grunt.log.writeln('> ', name, value);
+                grunt.verbose.writeln('>> config:'['cyan'], name, '=', value);
             }
             else {
                 setConfigs(rootname + label, value);

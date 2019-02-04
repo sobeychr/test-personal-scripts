@@ -6,9 +6,13 @@ module.exports = grunt => {
         options: {
             livereload: true
         },
-        css: {
+        dev: {
             files: ['asset/scss/**/*.scss'],
             tasks: ['sass']
+        },
+        stage: {
+            files: ['asset/scss/**/*.scss'],
+            tasks: ['sass', 'cssmin']
         }
     };
 };

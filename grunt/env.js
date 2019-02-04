@@ -19,11 +19,13 @@ module.exports = grunt => {
         let name = 'env' + ucFirst(label);
 
         grunt.config.set(name, value);
-        //grunt.log.writeln('env config:', name, '=', value);
+        grunt.verbose.writeln('>> env:'['cyan'], name, '=', value);
     }
 
-    let isLocal = grunt.config.get('envENV') === 'dev'
+    let isDev = grunt.config.get('envENV') === 'dev'
         || grunt.option('env') === 'dev';
+
+    grunt.log.writeln('>> isDev:'['cyan'], isDev);
 
     return {};
 };

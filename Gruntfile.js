@@ -9,6 +9,8 @@ module.exports = grunt => {
     const now = grunt.config.get('setupDate'),
           taskConfigs = require( grunt.config.get('fileTask') )(grunt);
 
+    grunt.log.writeln('>> launched on'['green'], now);
+
     taskConfigs.pkg = pkg;
     taskConfigs.date = now;
 
