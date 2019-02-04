@@ -22,9 +22,14 @@ module.exports = grunt => {
         grunt.verbose.writeln('>> env:'['cyan'], name, '=', value);
     }
 
-    let isDev = grunt.config.get('envENV') === 'dev'
-        || grunt.option('env') === 'dev';
+    let isDev = grunt.config.get('envENV') === 'dev',
+        envOption = grunt.option('env');
 
+    if(typeof(envOption) !== 'undefined') {
+        isDev = envOption === 'dev';
+    }
+
+    grunt.config.set('isDev', isDev);
     grunt.log.writeln('>> isDev:'['cyan'], isDev);
 
     return {};
