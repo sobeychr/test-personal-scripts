@@ -28,5 +28,11 @@ $space: 3%;
         .output {
             margin-left: ($space * .5);
         }
+
+        &.datetots {
+            .input__value-time {
+                margin-top: 10px;
+            }
+        }
     }
 }
