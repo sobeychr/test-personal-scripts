@@ -30,7 +30,6 @@ module.exports = grunt => {
     }
 
     grunt.config.set('isDev', isDev);
-    grunt.log.writeln('>> isDev:'['cyan'], isDev);
-
+    
     return {};
 };
