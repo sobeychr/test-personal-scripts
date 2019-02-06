@@ -1,6 +1,22 @@
+label.checkbox {
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+    padding: 3px 6px;
+}
+
 .dheader {
     &__title {
         text-align: center;
+    }
+}
+
+.clearfix {
+    &:after,
+    &:before {
+        clear: both;
+        content: ' ';
+        display: table;
     }
 }
 

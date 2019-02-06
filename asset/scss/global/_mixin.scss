@@ -1,0 +1,16 @@
+@mixin fRoundBottom($number) {
+    border-bottom-left-radius: $number;
+    border-bottom-right-radius: $number;
+}
+@mixin fRoundLeft($number) {
+    border-bottom-left-radius: $number;
+    border-top-left-radius: $number;
+}
+@mixin fRoundRight($number) {
+    border-bottom-right-radius: $number;
+    border-top-right-radius: $number;
+}
+@mixin fRoundTop($number) {
+    border-top-left-radius: $number;
+    border-top-right-radius: $number;
+}

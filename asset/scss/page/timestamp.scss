@@ -1,0 +1,32 @@
+@import 'global';
+
+$space: 3%;
+
+.main {
+    width: 700px;
+
+    form {
+        background: rgba(255,255,255, .2);
+        border-left: 5px solid transparent;
+        margin: 20px;
+        padding: 10px;
+
+        &:hover {
+            border-left-color: #FFF;
+        }
+
+        .submit {
+            display: none;
+        }
+
+        .input,
+        .output {
+            display: block;
+            float: left;
+            width: (50 - $space);
+        }
+        .output {
+            margin-left: ($space * .5);
+        }
+    }
+}

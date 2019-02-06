@@ -89,5 +89,7 @@
         };
     })();
 
-    hosts.init();
+    $(function() {
+        hosts.init();
+    });
 }(document, jQuery));
