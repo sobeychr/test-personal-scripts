@@ -52,6 +52,7 @@ class CPageConfig extends BaseConfig
                 'links' => [
                     'hosts',
                     'parser',
+                    'ppp-logos',
                     'timestamp',
                 ],
             ],
