@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - css",
+    "icon": "css",
+    "css": [
+        "default",
+        "page/css"
+    ],
+    "js": [
+        "jquery",
+        "page/css"
+    ]
+}

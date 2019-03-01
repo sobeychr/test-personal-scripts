@@ -2,20 +2,11 @@
 
 module.exports = grunt => {
 
-    const isDev = grunt.config.get('isDev'),
-          now = grunt.config.get('setupDate');
-
     grunt.registerTask('default', () => {
-        grunt.log.writeln('>> launched on'['green'], now);
-        grunt.log.writeln('>> isDev:'['cyan'], isDev);
-
-        let tasks = ['sass'];
-
-        if(isDev) {
-            tasks.push('watch:dev');
-        }
-
-        grunt.task.run(tasks);
+        grunt.log.writeln('No grunt task selected'['red']);
+        grunt.log.writeln('> add --mo='['cyan'] + '[module]'['yellow'], 'Automatically adds a new page/module');
+        grunt.log.writeln('> remove --mo='['cyan'] + '[module]'['yellow'], 'Removed an existing page/module');
+        grunt.log.writeln('> run'['cyan'], 'Builds and Watch content');
     });
 
     return {};

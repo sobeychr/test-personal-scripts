@@ -19,6 +19,14 @@ module.exports = grunt => {
 
     setConfigs('', configs);
 
+    const addRemove = {
+            'script.js'  : 'asset/js/page/{mo}.js',
+            'style.scss' : 'asset/scss/page/{mo}.scss',
+            'setup.json' : 'include/setup/page/{mo}.json',
+            'view.php'   : 'include/view/page/{mo}.php'
+        };
+    grunt.config.set('addRemove', addRemove);
+
     require('./env.js')(grunt);
 
     return {};

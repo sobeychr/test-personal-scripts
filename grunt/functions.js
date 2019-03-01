@@ -1,7 +1,19 @@
 'use strict';
 
 module.exports = grunt => {
-    const ucFirst = string => string.charAt(0).toUpperCase() + string.slice(1);
+
+    const repaceAll = (string, search, replace) => {
+        if(replace.indexOf(search) >= 0) {
+            grunt.fail.warn('Endless -replaceAll()- function in motion with "'+search+'" => "'+replace+'"', 3);
+            return;
+        }
+
+        while(string.indexOf(search) >= 0) {
+            string = string.replace(search, replace);
+        }
+
+        return string;
+    };
 
     const setConfigs = (rootname, configs) => {
         for(let label in configs)
@@ -18,8 +30,11 @@ module.exports = grunt => {
         }
     };
 
-    grunt.config.set('ucFirst',    ucFirst);
+    const ucFirst = string => string.charAt(0).toUpperCase() + string.slice(1);
+
+    grunt.config.set('repaceAll', repaceAll);
     grunt.config.set('setConfigs', setConfigs);
+    grunt.config.set('ucFirst', ucFirst);
 
     return {};
 };
