@@ -1,5 +1,45 @@
 @import 'global';
 
 .main {
+    margin: 0 20px;
 
+    .btn {
+        margin-bottom: 10px;
+
+        &__submit {
+            border-color: #0D0;
+            color: #0D0;
+            margin-bottom: 5px;
+        }
+    }
+
+    .input {
+        border-bottom: 3px solid #DDD;
+        margin-bottom: 50px;
+        padding-bottom: 10px;
+    }
+
+    .old {
+        margin-right: 10px;
+    }
+
+    .old,
+    .new {
+        float: left;
+        width: calc(50% - 10px);
+
+        textarea {
+            min-height: 150px;
+            width: 100%;
+        }
+    }
+
+    .output {
+        .old,
+        .new {
+            font: 12px "Courier New", sans-serif;
+            max-width: 100%;
+            white-space: pre;
+        }
+    }
 }
