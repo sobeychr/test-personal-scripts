@@ -88,7 +88,7 @@ class CHost
         $link = substr(strstr($line, ' ', false), 1);
         $links = explode(' ', $link);
         
-        $template = CTemplate::get(['chost','entry']);
+        //$template = CTemplate::get(['chost','entry']);
 
         $html = array_map(function($url) {
             return '<a href="//'.$url.'" target="_blank" class="chost__link">'.$url.'</a>';
