@@ -65,34 +65,37 @@ class CPageConfig extends BaseConfig
     {
         $config = [
             'parser' => [
-                'Char Codes' => [
-                    'charCodes',
-                    ['on',  'on'],
-                    ['off', 'off'],
+                'list' => [
+                    'Base 64' => [
+                        'base64Encode',
+                        ['on',  'on'],
+                        ['off', 'off'],
+                    ],
+                    'Char Codes' => [
+                        'charCodes',
+                        ['on',  'on'],
+                        ['off', 'off'],
+                    ],
+                    'Cookie' => [
+                        'cookieParse',
+                        ['off', 'decode'],
+                    ],
+                    'JSON' => [
+                        'jsonParse',
+                        ['on',  'pretty'],
+                        ['off', 'minify'],
+                    ],
+                    'GET parameter' => [
+                        'getParse',
+                        ['off', 'decode'],
+                    ],
+                    'URL' => [
+                        'urlParse',
+                        ['on',  'encode'],
+                        ['off', 'decode'],
+                    ],
                 ],
-                'Base 64' => [
-                    'base64Encode',
-                    ['on',  'on'],
-                    ['off', 'off'],
-                ],
-                'JSON' => [
-                    'jsonParse',
-                    ['on',  'pretty'],
-                    ['off', 'minify'],
-                ],
-                'URL' => [
-                    'urlParse',
-                    ['on',  'encode'],
-                    ['off', 'decode'],
-                ],
-                'Cookie' => [
-                    'cookieParse',
-                    ['off', 'decode'],
-                ],
-                'GET parameter' => [
-                    'getParse',
-                    ['off', 'decode'],
-                ],
+                'probiller' => 'https://probiller.com/mcp/tools/crypt',
             ],
         ];
 

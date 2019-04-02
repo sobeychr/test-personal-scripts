@@ -52,6 +52,16 @@ $btnOnColor1: #0F0;
             }
         }
     }
+
+    .probiller {
+        font: bold 20px $fontDefault;
+        padding: 2px 5px;
+
+        &:before {
+            content: '>';
+            margin-right: 5px;
+        }
+    }
 }
 
 .main {
@@ -95,11 +105,55 @@ $btnOnColor1: #0F0;
     width: 100%;
 }
 
-.footer {
+#popup {
+    background: #000;
+    box-shadow: 0 0 3px 3px $colorWhite3;
+    left: calc(50% - 120px);
+    position: fixed;
     opacity: 0;
+    padding: 5px;
+    top: 55px;
     transition: opacity .5s linear;
 
-    &--show {
+    &.popup--show {
         opacity: 1;
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+
+        &:nth-child(n + 2){
+            margin-top: 10px;
+        }
+
+        span:nth-child(n + 2) {
+            margin-left: 5px;
+        }
+    }
+
+    .status {
+        font-style: italic;
+    }
+    .function {
+        font-weight: bold;
+    }
+    .result {
+        font-weight: bold;
+
+        &.fail {
+            color: #A00;
+        }
+        &.success {
+            color: #0A0;
+        }
+    }
+    .type {
+        &.decode {
+            color: $btnOffColor0;
+        }
+        &.encode {
+            color: $btnOnColor0;
+        }
     }
 }

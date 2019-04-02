@@ -1,7 +1,8 @@
 <?php
 use App\CCore;
 
-$buttons = CCore::config(['page', 'parser']);
+$buttons = CCore::config(['page', 'parser', 'list']);
+$probiller = CCore::config(['page', 'parser', 'probiller']);
 ?>
 <aside class='aside'>
     <?php foreach($buttons as $label=>$configs) :
@@ -18,7 +19,19 @@ $buttons = CCore::config(['page', 'parser']);
             <?php endforeach; ?>
         </div>
     <?php endforeach; ?>
+    <div>
+        <a class='probiller' href='<?=$probiller;?>' target='_blank'>ProBiller</a>
+    </div>
 </aside>
+
+<div id='popup'>
+    <p>
+        <span class='function'></span>
+        <span class='type'></span>
+        <span class='result'></span>
+    </p>
+    <p class='log'></p>
+</div>
 
 <main class='main'>
     <article>
@@ -30,5 +43,3 @@ $buttons = CCore::config(['page', 'parser']);
         <pre id='output'></pre>
     </article>
 </main>
-
-<footer class='footer'></footer>

@@ -6,12 +6,27 @@
         var _configs = {
             attrFunc:    'data-func',
             classEncode: 'on',
-            classFooterShow: 'footer--show',
 
             selButtons: '.aside button',
-            selFooter:  '.footer',
             selInput:   '#input',
-            selOutput:  '#output'
+            selOutput:  '#output',
+
+            popup: {
+                delay: 7500,
+
+                classAnim:    'popup--show',
+                classDecode:  'decode',
+                classEncode:  'encode',
+                classFail:    'fail',
+                classSuccess: 'success',
+
+                selMain:   '#popup',
+                selFunc:   '#popup .function',
+                selLog:    '#popup .log',
+                selResult: '#popup .result',
+                selStatus: '#popup .status',
+                selType:   '#popup .type'
+            }
         };
 
         var init = function() {
@@ -24,19 +39,31 @@
                 encode = $this.hasClass(_configs.classEncode),
                 input  = $(_configs.selInput).val().toString(),
                 output = eval(func+'(input,'+encode+')'),
-                footer = 'Finished '+func+'('+encode+')';
+                success = output.length > 0;
 
+            // Output results
             $(_configs.selOutput).text(output);
 
-            if(output.length === 0) {
-                footer += ' -- output is empty';
-            }
+            // Outputs popup
+            $(_configs.popup.selFunc).text(func);
+            $(_configs.popup.selLog).text(output.length);
+            $(_configs.popup.selResult)
+                .text(success ? 'success' : 'fail')
+                .addClass(success ? _configs.popup.classSuccess : _configs.popup.classFail);
+            $(_configs.popup.selType)
+                .text(encode ? 'encode' : 'decode')
+                .addClass(encode ? _configs.popup.classEncode : _configs.popup.classDecode);
 
-            $(_configs.selFooter)
-                .removeClass(_configs.classFooterShow)
-                .delay(300)
-                .text(footer)
-                .addClass(_configs.classFooterShow);
+            // Anim in
+            $(_configs.popup.selMain).addClass(_configs.popup.classAnim);
+
+            // Anim out
+            setTimeout(function() {
+                $(_configs.popup.selMain).removeClass(_configs.popup.classAnim);
+                $(_configs.popup.selResult)
+                    .removeClass(_configs.popup.classFail)
+                    .removeClass(_configs.popup.classSuccess);
+            }, _configs.popup.delay);
         };
 
         var base64Encode = function(str, encode) {
@@ -113,8 +140,58 @@
         };
 
         var urlParse = function(str, encode) {
-            return encode ? encodeURI(str) : decodeURI(str);
+            return encode ? encodeURI(str) : urlDecode(str);
         };
+        var urlDecode = function(str) {
+            var codes = {
+                ' ' : '%20',
+                '!' : '%21',
+                '"' : '%22',
+                '#' : '%23',
+                '$' : '%24',
+                '%' : '%25',
+                '&' : '%26',
+                '\'' : '%27',
+                '(' : '%28',
+                ')' : '%29',
+                '*' : '%2A',
+                '+' : '%2B',
+                ',' : '%2C',
+                '-' : '%2D',
+                '.' : '%2E',
+                '/' : '%2F',
+                ':' : '%3A',
+                ';' : '%3B',
+                '<' : '%3C',
+                '=' : '%3D',
+                '>' : '%3E',
+                '?' : '%3F',
+                '@' : '40%',
+                '[' : '%5B',
+                '\\' : '%5C',
+                ']' : '%5D',
+                '^' : '%5E',
+                '_' : '%5F',
+                '`' : '60%',
+                '{' : '%7B',
+                '|' : '%7C',
+                '}' : '%7D',
+                '~' : '%7E',
+                '`' : '80%',
+                '‚' : '82%'
+            };
+
+            var i = '';
+            for(i in codes)
+            {
+                while(str.indexOf(codes[i]) >= 0)
+                {
+                    str = str.replace(codes[i], i);
+                }
+            }
+
+            return str;
+        }
 
         return {
             init:  init,

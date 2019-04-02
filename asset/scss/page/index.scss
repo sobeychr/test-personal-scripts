@@ -3,18 +3,16 @@
 $links: 'css', 'hosts', 'parser', 'timestamp';
 
 .main {
-    margin-top: 20%;
+    margin-top: 10%;
     max-width: 400px;
     padding: 0 30px;
 
     a {
         box-shadow: 0 0 3px 3px rgba($linkColor0, 0.5);
         display: block;
-        float: left;
         margin: 10px;
         padding: 7px;
         text-align: center;
-        width: calc(50% - 2*17px);
 
         &:before {
             background: transparent no-repeat top center;
@@ -33,6 +31,11 @@ $links: 'css', 'hosts', 'parser', 'timestamp';
             &.#{$entry}:before {
                 background-image: url('#{$pathIcon}#{$entry}.png');
             }
+        }
+
+        @media (min-width: 480px) {
+            float: left;
+            width: calc(50% - 2*17px);
         }
     }
 }
