@@ -114,7 +114,30 @@
         };
 
         var getParse = function(str, encode) {
-            return str;
+            var url = new URL( urlDecode(str) ),
+                search = url.search.substring(1).split('&'),
+                list = ['hash', 'host', 'hostname', 'origin', 'pathname', 'port', 'protocol'],
+                i = '',
+                key = '',
+                arr = [];
+
+            for(i in list)
+            {
+                key = list[i];
+                if(typeof url[key] !== 'undefined') {
+                    arr.push(key + ':', '\t' + url[key]);
+                }
+            }
+
+            if(search.length > 0) {
+                arr.push('search:', '\t' + url.search);
+                for(i in search)
+                {
+                    arr.push('\t\t' + search[i].replace('=', ' = '));
+                }
+            }
+
+            return arr.join('\n');
         };
 
         var jsonParse = function(str, encode) {
