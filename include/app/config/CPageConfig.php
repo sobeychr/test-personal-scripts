@@ -80,6 +80,11 @@ class CPageConfig extends BaseConfig
                         'cookieParse',
                         ['off', 'decode'],
                     ],
+                    'CSS parser' => [
+                        'cssParse',
+                        ['on',  'pretty'],
+                        ['off', 'minify'],
+                    ],
                     'JSON' => [
                         'jsonParse',
                         ['on',  'pretty'],

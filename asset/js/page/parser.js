@@ -125,6 +125,52 @@
             return jsonParse(n, true);
         };
 
+        var cssParse = function(str, pretty) {
+            var n = str;
+
+            if(pretty) {
+
+            }
+            else {
+                n = n.replace(/\s*(\n|\r)\s*/g, '');
+                n = cssRemoveComments(n);
+
+                var q = 0;
+                while(n.indexOf('\'') >= 0) {
+                    n = n.replace(/\'[^\']+\'/, '$'+q);
+                    q++;
+
+                    if(q >= 50) break;
+                }
+            }
+
+            return n;
+        };
+        var cssRemoveComments = function(str) {
+            var cut = cutBetween(str, '/*', '*/');
+            while(cut.length > 0)
+            {
+                str = str.replace(cut, '');
+                cut = cutBetween(str, '/*', '*/');
+            }
+            return str;
+        };
+        
+        var cutBetween = function(str, start, end) {
+            var i = str.indexOf(start);
+            if(i === -1) {
+                return '';
+            }
+
+            var j = str.indexOf(end, i);
+            if(j === -1) {
+                return '';
+            }
+            j += end.length;
+
+            return str.substring(i, j);
+        };
+
         var getParse = function(str, encode) {
             var url = new URL( urlDecode(str) ),
                 search = url.search.substring(1).split('&'),
@@ -152,12 +198,12 @@
             return arr.join('\n');
         };
 
-        var jsonParse = function(str, encode) {
+        var jsonParse = function(str, pretty) {
             var json = str.replace(/(\n|\r)+/g, ''),
                 n = '';
 
             try {
-                n = encode
+                n = pretty
                     ? JSON.stringify(JSON.parse(json), null, 2)
                     : JSON.stringify(JSON.parse(json));
             }
@@ -174,10 +220,10 @@
             return n;
         };
 
-        var htmlParse = function(str, encode) {
+        var htmlParse = function(str, pretty) {
             var n = str;
 
-            if(encode) {
+            if(pretty) {
                 n = n
                     .replace(/[\ |\t]+\</g, '<')
                     .replace(/\>[\ |\t]+/g, '>')
