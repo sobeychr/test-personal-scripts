@@ -60,6 +60,8 @@ pre {
     border-left: 5px $preBorder;
     border-right: 2px $preBorder;
     font: 12px $fontPre;
+    line-break: strict;
     margin: 5px 0;
     padding: 5px 5px 5px 10px;
+    white-space: pre-wrap;
 }

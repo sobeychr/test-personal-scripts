@@ -89,6 +89,11 @@ class CPageConfig extends BaseConfig
                         'getParse',
                         ['off', 'decode'],
                     ],
+                    'HTML parser' => [
+                        'htmlParse',
+                        ['on',  'pretty'],
+                        ['off', 'minify'],
+                    ],
                     'URL' => [
                         'urlParse',
                         ['on',  'encode'],

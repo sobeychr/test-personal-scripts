@@ -22,13 +22,14 @@ class CView
 
     protected function compileAssets(array $list, bool $isCss=true):string
     {
+        $hash = substr(sha1(time()), 0, 6);
         $folder = CCore::config([
             'path',
             $isCss ? 'css' : 'js'
         ]);
         $code = $isCss
-            ? '<link rel="stylesheet" type="text/css" href="'.$folder.'{{link}}.css">'
-            : '<script src="'.$folder.'{{link}}.js"></script>';
+            ? '<link rel="stylesheet" type="text/css" href="'.$folder.'{{link}}.css#'.$hash.'">'
+            : '<script src="'.$folder.'{{link}}.js#'.$hash.'"></script>';
 
         $return = array_map(function($entry) use ($code) {
             return fReplace($code, ['{{link}}' => $entry]);

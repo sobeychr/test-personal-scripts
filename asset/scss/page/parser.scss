@@ -132,11 +132,20 @@ $btnOnColor1: #0F0;
         }
     }
 
-    .status {
+    .log {
+        color: #888;
         font-style: italic;
+
+        &:before {
+            content: 'String length: ';
+        }
     }
+
     .function {
         font-weight: bold;
+    }
+    .status {
+        font-style: italic;
     }
     .result {
         font-weight: bold;
@@ -146,6 +155,9 @@ $btnOnColor1: #0F0;
         }
         &.success {
             color: #0A0;
+        }
+        &.warning {
+            color: #E0AA35;
         }
     }
     .type {

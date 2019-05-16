@@ -19,6 +19,7 @@
                 classEncode:  'encode',
                 classFail:    'fail',
                 classSuccess: 'success',
+                classWarning: 'warning',
 
                 selMain:   '#popup',
                 selFunc:   '#popup .function',
@@ -39,20 +40,31 @@
                 encode = $this.hasClass(_configs.classEncode),
                 input  = $(_configs.selInput).val().toString(),
                 output = eval(func+'(input,'+encode+')'),
-                success = output.length > 0;
+                isWarning = input.length === 0,
+                isSuccess = output.length > 0;
 
-            // Output results
-            $(_configs.selOutput).text(output);
-
-            // Outputs popup
             $(_configs.popup.selFunc).text(func);
-            $(_configs.popup.selLog).text(output.length);
-            $(_configs.popup.selResult)
-                .text(success ? 'success' : 'fail')
-                .addClass(success ? _configs.popup.classSuccess : _configs.popup.classFail);
-            $(_configs.popup.selType)
-                .text(encode ? 'encode' : 'decode')
-                .addClass(encode ? _configs.popup.classEncode : _configs.popup.classDecode);
+
+            // Warning display
+            if(isWarning) {
+                $(_configs.popup.selResult)
+                    .text('Unable to process, empty input')
+                    .addClass(_configs.popup.classWarning);
+            }
+
+            // Fail or Success display
+            else {
+                $(_configs.selOutput).text(output);
+
+                $(_configs.popup.selLog).text(output.length);
+
+                $(_configs.popup.selResult)
+                    .text(isSuccess ? 'success' : 'fail')
+                    .addClass(isSuccess ? _configs.popup.classSuccess : _configs.popup.classFail);
+                $(_configs.popup.selType)
+                    .text(encode ? 'encode' : 'decode')
+                    .addClass(encode ? _configs.popup.classEncode : _configs.popup.classDecode);
+            }
 
             // Anim in
             $(_configs.popup.selMain).addClass(_configs.popup.classAnim);
@@ -160,6 +172,70 @@
             }
 
             return n;
+        };
+
+        var htmlParse = function(str, encode) {
+            var n = str;
+
+            if(encode) {
+                n = n
+                    .replace(/[\ |\t]+\</g, '<')
+                    .replace(/\>[\ |\t]+/g, '>')
+                    .replace(/\>\</g, '>\n<')
+                    .replace(/\n[\ |\t]+/g, '\n')
+                    .replace(/(\n|\r)+/g, '\n')
+                    .replace('\n', '');
+
+                var a = n.split('\n'),
+                    j = 0, t = ' '.repeat(4),
+                    i = '', l = '',
+                    r = [];
+
+                for(i in a)
+                {
+                    l = a[i].toString();
+
+                    if(htmlDeindent(l)) {
+                        j--;
+                    }
+
+                    if(j < 0) {
+                        j = 0;
+                    }
+                    r.push(t.repeat(j) + l);
+
+                    if(htmlIndent(l)) {
+                        j++;
+                    }
+                }
+
+                n = r.join('\n');
+            }
+            else {
+                n = n
+                    .replace(/\s+(\r\n)*\</g, '<')
+                    .replace(/\>\s+(\r\n)*/g, '>');
+            }
+
+            return n;
+        };
+        var htmlIndent = function(line) {
+            var res = /\<\w+/.test(line)
+                && line.indexOf('</') === -1
+                && line.indexOf('/>') === -1;
+
+            if(res && (
+                line.indexOf('<br') >= 0
+                || line.indexOf('<hr') >= 0
+                || line.indexOf('<link') >= 0
+            )) {
+                res = false;
+            }
+
+            return res;
+        };
+        var htmlDeindent = function(line) {
+            return line.indexOf('</') >= 0 && !/\<\w+/.test(line);
         };
 
         var urlParse = function(str, encode) {
