@@ -126,21 +126,65 @@
         };
 
         var cssParse = function(str, pretty) {
-            var n = str;
+            var n = str,
+                i = '',
+                l = '';
 
             if(pretty) {
+                n = cssParse(n, false);
 
+                n = n
+                    .replace(/\;/g, ';\n')
+                    .replace(/\}/g, ';\n}\n')
+                    .replace(/\,/g, ', ')
+                    .replace(/([^\s])\#/g, '$1 #')
+                    .replace(/\:([^\s])/g, ': $1')
+                    .replace(/\: (\w+(\{|\,)|\:)/g, ':$1')
+                    .replace(/\{/g, ' {\n');
+
+                var a = n.split('\n'),
+                    t = ' '.repeat(4),
+                    j = 0,
+                    r = [];
+                for(i in a)
+                {
+                    l = a[i].toString();
+
+                    if(l === '}') {
+                        j--;
+                    }
+                    if(j < 0) {
+                        j = 0;
+                    }
+                    
+                    r.push(t.repeat(j) + l);
+
+                    if(l.substring(l.length - 2) === ' {') {
+                        r.pop();
+                        l = l.replace(/\,\ /g, ',\n');
+                        r.push(t.repeat(j) + l);
+
+                        j++;
+                    }
+                }
+
+                n = r.join('\n');
             }
             else {
                 n = n.replace(/\s*(\n|\r)\s*/g, '');
                 n = cssRemoveComments(n);
 
-                var q = 0;
-                while(n.indexOf('\'') >= 0) {
-                    n = n.replace(/\'[^\']+\'/, '$'+q);
-                    q++;
+                var strings = cssStrings(n);
+                n = strings[0];
+                n = n
+                    .replace(/\s*(\n|\r)\s*/g, '')
+                    .replace(/\s*(\,|\{|\}|\:|\;|\#|\!|\-|\@|\(|\))\s*/g, '$1')
+                    .replace(/\;\}/g, '}');
 
-                    if(q >= 50) break;
+                for(i in strings[1])
+                {
+                    l = strings[1][i].toString();
+                    n = n.replace('$' + i, l);
                 }
             }
 
@@ -155,6 +199,32 @@
             }
             return str;
         };
+        var cssStrings = function(str) {
+            var quotes = ['\'', '"'],
+                i = '', q = '',
+                cut = '', count = 0,
+                cuts = [];
+
+            for(i in quotes)
+            {
+                q = quotes[i].toString();
+                while(str.indexOf(q) >= 0)
+                {
+                    cut = cutBetween(str, q, q);
+                    if(cut.length === 0) {
+                        break;
+                    }
+                    else {
+                        cuts.push(cut);
+
+                        str = str.replace(cut, '$'+count);
+                        count++;
+                    }
+                }
+            }
+
+            return [str, cuts];
+        };
         
         var cutBetween = function(str, start, end) {
             var i = str.indexOf(start);
@@ -162,7 +232,7 @@
                 return '';
             }
 
-            var j = str.indexOf(end, i);
+            var j = str.indexOf(end, i + 1);
             if(j === -1) {
                 return '';
             }
@@ -244,10 +314,10 @@
                     if(htmlDeindent(l)) {
                         j--;
                     }
-
                     if(j < 0) {
                         j = 0;
                     }
+
                     r.push(t.repeat(j) + l);
 
                     if(htmlIndent(l)) {
