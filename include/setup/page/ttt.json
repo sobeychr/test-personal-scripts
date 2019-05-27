@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - TTT",
+    "icon": "ttt",
+    "css": [
+        "default",
+        "page/ttt"
+    ],
+    "js": [
+        "jquery",
+        "page/ttt"
+    ]
+}

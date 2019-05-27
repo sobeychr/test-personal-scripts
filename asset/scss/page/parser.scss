@@ -108,6 +108,7 @@ $btnOnColor1: #0F0;
 #popup {
     background: #000;
     box-shadow: 0 0 3px 3px $colorWhite3;
+    cursor: pointer;
     left: calc(50% - 120px);
     position: fixed;
     opacity: 0;

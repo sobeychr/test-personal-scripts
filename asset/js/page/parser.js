@@ -30,8 +30,11 @@
             }
         };
 
+        var _timer = 0;
+
         var init = function() {
             $(doc).on('click', _configs.selButtons, onClick);
+            $(doc).on('click', _configs.popup.selMain, onClose);
         };
 
         var onClick = function() {
@@ -70,12 +73,20 @@
             $(_configs.popup.selMain).addClass(_configs.popup.classAnim);
 
             // Anim out
-            setTimeout(function() {
-                $(_configs.popup.selMain).removeClass(_configs.popup.classAnim);
-                $(_configs.popup.selResult)
-                    .removeClass(_configs.popup.classFail)
-                    .removeClass(_configs.popup.classSuccess);
-            }, _configs.popup.delay);
+            _timer = setTimeout(onTimeOut, _configs.popup.delay);
+        };
+
+        var onClose = function() {
+            clearTimeout(_timer);
+            _timer = 0;
+            onTimeOut();
+        };
+
+        var onTimeOut = function() {
+            $(_configs.popup.selMain).removeClass(_configs.popup.classAnim);
+            $(_configs.popup.selResult)
+                .removeClass(_configs.popup.classFail)
+                .removeClass(_configs.popup.classSuccess);
         };
 
         var base64Encode = function(str, encode) {
