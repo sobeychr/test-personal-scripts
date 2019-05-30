@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - blur",
+    "icon": "blur",
+    "css": [
+        "default",
+        "page/blur"
+    ],
+    "js": [
+        "jquery",
+        "page/blur"
+    ]
+}

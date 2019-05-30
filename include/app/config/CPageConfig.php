@@ -50,10 +50,12 @@ class CPageConfig extends BaseConfig
         $config = [
             'index' => [
                 'links' => [
+                    'blur',
                     'css',
                     'hosts',
                     'parser',
                     'timestamp',
+                    'ttt',
                 ],
             ],
         ];

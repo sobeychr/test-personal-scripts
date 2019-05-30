@@ -1,0 +1,84 @@
+form {
+    float: left;
+    margin-right: 1%;
+    max-width: 250px;
+    width: 49%;
+}
+label {
+    box-shadow: 0 0 3px 3px rgba(255,255,255, .1);
+    cursor: pointer;
+    display: block;
+    padding: 3px 5px;
+
+    &:nth-child(n + 2) {
+        margin-top: 10px;
+    }
+
+    &:hover {
+        box-shadow: 0 0 3px 3px rgba(255,255,255, .3);
+    }
+
+    &.on {
+        color: #00B712;
+    }
+    &:not(.on) {
+        color: #AAA;
+    }
+}
+input[type='checkbox'] {
+    display: none;
+}
+
+#results {
+    float: left;
+    width: 50%;
+
+    .entry {
+        border: 2px solid transparent;
+        padding: 5px;
+
+        &:nth-child(n + 2) {
+            margin-top: 10px;
+        }
+        &.template {
+            display: none;
+        }
+        &:hover {
+            border-color: rgba(255,255,255, .5);
+        }
+
+        p:nth-child(n + 2) {
+            margin-top: 5px;
+        }
+
+        .time {
+            color: #FFF;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .result {
+            font-weight: bold;
+        }
+        .imgs {
+            margin: 10px 0 0 20px;
+
+            p:hover {
+                color: #FFF;
+            }
+        }
+    }
+}
+
+#preview {
+    background: rgba(0,0,0, .5);
+    bottom: 5px;
+    display: block;
+    left: 5px;
+    padding: 3px;
+    position: fixed;
+
+    &[src] {
+        border: 5px solid #000;
+        box-shadow: 0 0 3px 3px rgba(255,255,255, .1);
+    }
+}

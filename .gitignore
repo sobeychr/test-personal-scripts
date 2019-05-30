@@ -1,3 +1,4 @@
 \.env
 asset/css/
+blur-img/dist/
 node_modules/
