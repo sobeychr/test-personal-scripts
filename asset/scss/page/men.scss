@@ -1,0 +1,138 @@
+.main {
+    margin: 50px auto 0;
+    max-width: 850px;
+    width: 80%;
+
+    #form {
+        button:disabled {
+            font-style: italic;
+            opacity: 0.5;
+        }
+
+        button[type='submit'] {
+            border-color: #0A0;
+            color: #0A0;
+        }
+
+        label {
+            cursor: pointer;
+            display: block;
+            font-weight: bold;
+            margin: 10px 0;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            i {
+                color: #AAA;
+                font-weight: normal;
+            }
+        }
+
+        textarea {
+            margin-top: 5px;
+            min-height: 150px;
+            min-width: 350px;
+        }
+    }
+
+    #output {
+        margin-top: 20px;
+
+        .duration {
+            color: #AAA;
+            font-style: italic;
+            margin-bottom: 5px;
+
+            &:not(:empty):before {
+                content: "done in";
+                margin-right: 3px;
+            }
+        }
+
+        .entry {
+            border-left: 2px solid transparent;
+            border-top: 2px solid transparent;
+            padding: 5px;
+
+            &:nth-child(n + 2) {
+                margin-top: 10px;
+            }
+
+            &:nth-child(3n + 1) {
+                background: #303030;
+            }
+
+            &:hover {
+                border-color: #AAA;
+            }
+
+            &.template {
+                display: none;
+            }
+
+            p:nth-child(n + 2) {
+                margin-top: 3px;
+            }
+
+            .id {
+                color: #FFF;
+                font-weight: bold;
+            }
+            .alt {
+                font-weight: bold;
+                margin: 0 20px;
+
+                &.different {
+                    color: #FFA100;
+                }
+                &.same {
+                    color: #0A0;
+                }
+            }
+            .code {
+                font-style: italic;
+
+                &.fail {
+                    color: #A00;
+                }
+                &.good {
+                    color: #99FF00;
+                }
+                &.success {
+                    color: #0A0;
+                }
+            }
+
+            .received,
+            .sent {
+                &:before {
+                    color: #909090;
+                    margin-right: 5px;
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                i {
+                    color: #42F4DF;
+                }
+                span {
+                    color: #762FC6;
+                }
+            }
+
+            .received:before {
+                content: "Landed url:";
+            }
+
+            .sent {
+                &:before {
+                    content: "Sent url:"
+                }
+            }
+        }
+    }
+}

@@ -53,6 +53,7 @@ class CPageConfig extends BaseConfig
                     'blur',
                     'css',
                     'hosts',
+                    'men',
                     'parser',
                     'timestamp',
                     'ttt',

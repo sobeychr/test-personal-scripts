@@ -355,6 +355,9 @@
                 line.indexOf('<br') >= 0
                 || line.indexOf('<hr') >= 0
                 || line.indexOf('<link') >= 0
+                || line.indexOf('<html') >= 0
+                || line.indexOf('<!--') >= 0
+                || line.indexOf('<![') >= 0
             )) {
                 res = false;
             }

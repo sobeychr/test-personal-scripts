@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - Men IDs",
+    "icon": "men",
+    "css": [
+        "default",
+        "page/men"
+    ],
+    "js": [
+        "jquery",
+        "page/men"
+    ]
+}
