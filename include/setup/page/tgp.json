@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - tgp",
+    "icon": "tgp",
+    "css": [
+        "default",
+        "page/tgp"
+    ],
+    "js": [
+        "jquery",
+        "page/tgp"
+    ]
+}

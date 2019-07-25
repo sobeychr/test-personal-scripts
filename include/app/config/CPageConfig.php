@@ -55,8 +55,8 @@ class CPageConfig extends BaseConfig
                     'hosts',
                     'men',
                     'parser',
+                    'testlink',
                     'timestamp',
-                    'ttt',
                 ],
             ],
         ];

@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - TestLink",
+    "icon": "testlink",
+    "css": [
+        "default",
+        "page/testlink"
+    ],
+    "js": [
+        "jquery",
+        "page/testlink"
+    ]
+}

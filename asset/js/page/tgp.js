@@ -1,7 +1,7 @@
 (function (doc, $, undefined) {
     'use strict';
 
-    var ttt = (function() {
+    var tgp = (function() {
 
         var _configs = {
         };
@@ -15,6 +15,6 @@
     })();
 
     $(function() {
-        ttt.init();
+        tgp.init();
     });
 }(document, jQuery));
