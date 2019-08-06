@@ -1,8 +1,3 @@
-<?php
-use App\CCore;
-
-//$links = CCore::Config(['page', 'index', 'links']);
-?>
 <main class='main'>
     <section class='input clearfix'>
         <form action='' class='input__form'>
@@ -15,19 +10,16 @@ use App\CCore;
                 </p>
             </div>
 
-            <article class='old'>
+            <article class='input__old'>
                 <h2>Old</h2>
                 <textarea></textarea>
             </article>
-            <article class='new'>
+            <article class='input__new'>
                 <h2>New</h2>
                 <textarea></textarea>
             </article>
         </form>
     </section>
 
-    <section class='output clearfix'>
-        <article class='old'></article>
-        <article class='new'></article>
-    </section>
+    <section class='output clearfix'></section>
 </main>
