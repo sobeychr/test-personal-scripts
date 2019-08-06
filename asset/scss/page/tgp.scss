@@ -1,5 +1,28 @@
 @import 'global';
 
-.main {
+$backgrounds: '#F00', '#0F0', '#00F', '#FF0', '#F0F', '#0FF', '#333';
+$bgLength: length($backgrounds);
 
+.main {
+    position: relative;
+    width: 100%;
+
+    .col {
+        float: left;
+        margin: 0;
+        padding: 0;
+        width: 25%;
+
+        .entry {
+            height: 50px;
+            display: block;
+            width: 100%;
+
+            @for $i from 1 through $bgLength {
+                &-#{$i} {
+                    background: #{nth($backgrounds, $i)};
+                }
+            }
+        }
+    }
 }

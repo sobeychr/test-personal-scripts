@@ -69,6 +69,10 @@ class CPage
     public function setPageByRequest():void
     {
         $newPage = substr($this->core->request->getUri(), 1);
+        if(($i = strpos($newPage, '?')) !== false) {
+            $newPage = substr($newPage, 0, $i);
+        }
+
         if(!$newPage) {
             $newPage = CCore::config(['page', 'default', 'page']);
         }

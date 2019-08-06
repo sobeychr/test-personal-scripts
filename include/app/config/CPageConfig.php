@@ -15,6 +15,7 @@ class CPageConfig extends BaseConfig
         $this->setHost();
         $this->setIndex();
         $this->setParser();
+        $this->setTgp();
     }
 
     private function setDefault():void
@@ -109,6 +110,25 @@ class CPageConfig extends BaseConfig
                     ],
                 ],
                 'probiller' => 'https://probiller.com/mcp/tools/crypt',
+            ],
+        ];
+
+        $this->setConfig($config);
+    }
+
+    private function setTgp():void
+    {
+        $config = [
+            'tgp' => [
+                'links' => [
+                    'https://www.rk.com/tour/video/watch/3212755/stood-up/',
+                    'https://www.rk.com/tour/video/watch/3258404/worship-me/',
+                    'https://www.rk.com/tour/video/watch/3462849/eager-emily/',
+                    'https://www.rk.com/tour/video/watch/2572039/vip-booty/',
+                    'https://www.rk.com/tour/video/watch/3318491/big-titty-workout/',
+                    'https://www.rk.com/tour/video/watch/3151666/too-thicc-for-skinny-jeans/',
+                    'https://www.rk.com/tour/video/watch/3348903/selling-real-asstate/',
+                ],
             ],
         ];
 
