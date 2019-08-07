@@ -125,7 +125,7 @@
         };
 
         var parseCss = function(input) {
-            var outputStr = input.replace(/\}/g, '}\n'),
+            var outputStr = input.replace(/(\n|\r)+/g, '').replace(/\}/g, '}\n'),
                 outputArr = outputStr.split('\n');
             
             outputArr.sort();
