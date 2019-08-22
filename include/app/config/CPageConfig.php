@@ -80,6 +80,10 @@ class CPageConfig extends BaseConfig
                         ['on',  'on'],
                         ['off', 'off'],
                     ],
+                    'Char List' => [
+                        'charList',
+                        ['on',  'list'],
+                    ],
                     'Cookie' => [
                         'cookieParse',
                         ['off', 'decode'],

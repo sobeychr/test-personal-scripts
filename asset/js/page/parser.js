@@ -131,6 +131,27 @@
             return n.join('');
         };
 
+        var charList = function(str) {
+            var i = 0,  l = str.length,
+                a = '', o = 0,
+                arr = [];
+
+            for(i=0; i<l; i++)
+            {
+                a = str.substr(i, 1);
+                o = str.charCodeAt(i);
+
+                if(a === '\t') a = '[tab]';
+                else if(a === ' ') a = '[space]';
+                else if(a === '\n') a = '[new line]';
+                else if(a === '\r') a = '[line break]';
+
+                arr.push(o + '\t' + a);
+            }
+
+            return arr.join('\n');
+        };
+
         var cookieParse = function(str) {
             var n = base64Encode(str, false);
             return jsonParse(n, true);
