@@ -301,7 +301,7 @@
         };
 
         var jsonParse = function(str, pretty) {
-            var json = str.replace(/(\n|\r)+/g, ''),
+            var json = str.replace(/(\n|\r)+\s*/g, '').replace(/(\,|\:|\{|\})\s+/g, '$1'),
                 n = '';
 
             try {
@@ -375,8 +375,9 @@
             if(res && (
                 line.indexOf('<br') >= 0
                 || line.indexOf('<hr') >= 0
-                || line.indexOf('<link') >= 0
                 || line.indexOf('<html') >= 0
+                || line.indexOf('<link') >= 0
+                || line.indexOf('<meta') >= 0
                 || line.indexOf('<!--') >= 0
                 || line.indexOf('<![') >= 0
             )) {
