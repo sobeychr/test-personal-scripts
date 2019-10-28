@@ -1,0 +1,54 @@
+@import 'global';
+
+$btnOnColor0: #0A0;
+$btnOnColor1: #0F0;
+
+$btnSendColor0: #932CA3;
+$btnSendColor1: #C232D9;
+
+.main {
+    margin: 50px auto 0;
+    width: 80%;
+
+    .urls {
+        margin-top: 15px;
+
+        .buttons button {
+            margin: 5px;
+            padding: 5px 10px;
+            
+            &.add {
+                border-color: $btnOnColor0;
+                color: $btnOnColor0;
+
+                &:hover {
+                    border-color: $btnOnColor1;
+                    color: $btnOnColor1;
+                }
+            }
+            &.send {
+                border-color: $btnSendColor0;
+                color: $btnSendColor0;
+
+                &:hover {
+                    border-color: $btnSendColor1;
+                    color: $btnSendColor1;
+                }
+            }
+        }
+    }
+
+    #domain,
+    #list input {
+        max-width: 550px;
+        width: 100%;
+    }
+
+    #list input {
+        margin-top: 10px;
+
+        &.template {
+            display: none;
+        }
+    }
+}

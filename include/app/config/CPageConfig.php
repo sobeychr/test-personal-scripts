@@ -15,6 +15,7 @@ class CPageConfig extends BaseConfig
         $this->setHost();
         $this->setIndex();
         $this->setParser();
+        $this->setSeo();
         $this->setTgp();
     }
 
@@ -56,6 +57,7 @@ class CPageConfig extends BaseConfig
                     'hosts',
                     'men',
                     'parser',
+                    'seo',
                     'testlink',
                     'timestamp',
                 ],
@@ -114,6 +116,21 @@ class CPageConfig extends BaseConfig
                     ],
                 ],
                 'probiller' => 'https://probiller.com/mcp/tools/crypt',
+            ],
+        ];
+
+        $this->setConfig($config);
+    }
+
+    private function setSeo():void
+    {
+        $config = [
+            'seo' => [
+                'domains' => [
+                    'http://www.brazzers.spartan-brazzers-v3.vm/',
+                    'http://www-brazzers-stage1.brazzers.com/',
+                    'http://www-brazzersnetwork-stage1.brazzers.com/',
+                ],
             ],
         ];
 

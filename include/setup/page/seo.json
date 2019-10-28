@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - SEO",
+    "icon": "seo",
+    "css": [
+        "default",
+        "page/seo"
+    ],
+    "js": [
+        "jquery",
+        "page/seo"
+    ]
+}
