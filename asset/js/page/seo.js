@@ -34,9 +34,9 @@
                 {
                     entry = template[0].outerHTML
                         .replace('{fullurl}', robots[i].fullurl)
-                        .replace('{url}', robots[i].url)
-                        .replace('{title}', robots[i].title)
-                        .replace('{robString}', robots[i].robString);
+                        .replace('{url}', '\t' + robots[i].url)
+                        .replace('{title}', '\t' + robots[i].title)
+                        .replace('{robString}', '\t' + robots[i].robString);
 
                     $('#results').append(entry);
                 }

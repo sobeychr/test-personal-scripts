@@ -98,15 +98,11 @@ $btnSendColor1: #C232D9;
             }
             .url {
                 color: #eb349f;
-                text-indent: 10px;
             }
-            .title {
-                padding: 3px;
-                text-indent: 20px;
-            }
+            .url,
+            .title,
             .robots {
-                padding: 3px;
-                text-indent: 20px;
+                white-space: pre-wrap;
             }
         }
     }

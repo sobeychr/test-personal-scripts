@@ -11,7 +11,7 @@ $links = CCore::config(['page', 'seo', 'links']);
 $linksHtml = array_map(function(string $v):string {
     return '<input type="text" value="' . $v . '" placeholder="// URL">';
 }, $links);
-// $linksHtml = [];
+$linksHtml = [];
 ?>
 <main class='main'>
     <div id='blocker' class='hidden'>
@@ -31,12 +31,12 @@ $linksHtml = array_map(function(string $v):string {
             </p>
 
             <div id='results'>
-                <div class='entry template'>
-                    <p class='fullurl'>{fullurl}</p>
-                    <p class='url'>{url}</p>
-                    <p class='title'>{title}</p>
-                    <p class='robots'>{robString}</p>
-                </div>
+                <p class='entry template'>
+                    <span class='fullurl'>{fullurl}</span>
+                    <br/><span class='url'>{url}</span>
+                    <br/><span class='title'>{title}</span>
+                    <br/><span class='robots'>{robString}</span>
+                </p>
             </div>
 
             <div id='list'>

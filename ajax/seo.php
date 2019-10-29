@@ -21,10 +21,10 @@ foreach($urls as $url)
 
     if($content) {
         $robString = strstr($content, '<meta name="robots', false);
-        $robString = strstr($robString, '>', true);
+        $robString = strstr($robString, '>', true) . '>';
 
         $title = strstr($content, '<title', false);
-        $title = strstr($title, '</title>', true);
+        $title = strstr($title, '</title>', true) . '</title>';
     }
 
     $robots[] = [
