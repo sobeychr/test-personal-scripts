@@ -124,6 +124,19 @@ class CPageConfig extends BaseConfig
 
     private function setSeo():void
     {
+        $sort = ['bydate', 'mostrated', 'mostviewed', 'title', 'relevant'];
+        $time = ['alltime', 'thisweek', 'thismonth', 'thisyear', 'upcoming'];
+
+        $linkRoot = 'videos/all-sites/all-pornstars/all-categories/{time}/{sort}/';
+        $links = [];
+        foreach($sort as $s)
+        {
+            foreach($time as $t)
+            {
+                $links[] = fReplace($linkRoot, ['{time}' => $t, '{sort}' => $s]);
+            }
+        }
+
         $config = [
             'seo' => [
                 'domains' => [
@@ -131,6 +144,7 @@ class CPageConfig extends BaseConfig
                     'http://www-brazzers-stage1.brazzers.com/',
                     'http://www-brazzersnetwork-stage1.brazzers.com/',
                 ],
+                'links' => $links,
             ],
         ];
 

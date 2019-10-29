@@ -38,6 +38,31 @@ $btnSendColor1: #C232D9;
         }
     }
 
+    #blocker {
+        background: rgba(#000, 0.5) url('/asset/image/loading-circle.svg') center center no-repeat;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+
+        &.hidden {
+            display: none;
+        }
+
+        span {
+            color: #FFF;
+            display: block;
+            font-weight: bold;
+            pointer-events: none;
+            position: relative;
+            text-align: center;
+            top: 55%;
+            width: 100%;
+        }
+    }
+
     #domain,
     #list input {
         max-width: 550px;
@@ -49,6 +74,40 @@ $btnSendColor1: #C232D9;
 
         &.template {
             display: none;
+        }
+    }
+
+    #results {
+        .entry {
+            border-bottom: 1px solid rgba(#FFF, 0.3);
+            font-family: Courier New, Courier, Verdana, sans-serif;
+            font-size: 12px;
+            margin-top: 7px;
+            padding: 3px;
+
+            &:hover {
+                background: #262626;
+            }
+            &.template {
+                display: none;
+            }
+
+            .fullurl {
+                color: #34bdeb;
+                font-style: italic;
+            }
+            .url {
+                color: #eb349f;
+                text-indent: 10px;
+            }
+            .title {
+                padding: 3px;
+                text-indent: 20px;
+            }
+            .robots {
+                padding: 3px;
+                text-indent: 20px;
+            }
         }
     }
 }

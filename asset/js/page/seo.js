@@ -3,6 +3,9 @@
 
     var seo = (function() {
 
+        var secs = 0;
+        var timer = 0;
+
         var init = function() {
             $('.buttons .add').on('click', onAdd);
             $('form').on('submit', onSubmit);
@@ -15,27 +18,34 @@
         };
 
         var onPost = function(result) {
-            $('button, input[type="text"]').prop('disabled', false);
+            $('#blocker').addClass('hidden');
+            clearInterval(timer);
+            timer = 0;
 
             try {
                 var obj = JSON.parse(result),
                     robots = obj.robots,
+                    template = $('#results .template:first').clone(),
                     i = '',
-                    arr = [];
+                    entry = '';
 
-                console.log('[onPost]', robots);
-
+                template.removeClass('template');
                 for(i in robots)
                 {
-                    arr.push(robots[i].fullurl);
-                    arr.push('\t' + robots[i].url);
-                    arr.push('\t\t' + robots[i].robString);
-                }
+                    entry = template[0].outerHTML
+                        .replace('{fullurl}', robots[i].fullurl)
+                        .replace('{url}', robots[i].url)
+                        .replace('{title}', robots[i].title)
+                        .replace('{robString}', robots[i].robString);
 
-                $('#results').text(arr.join('\n'));
+                    $('#results').append(entry);
+                }
             }
             catch (err) {
-                $(_configs.selOutput).append('<h2>Error in response</h2><pre>' + result + '</pre><p>' + err + '</p>');
+                console.error('Error in response', {
+                    result: result,
+                    err: err
+                });
             }
         };
 
@@ -58,8 +68,17 @@
                 }
             });
 
-            $('button, input[type="text"]').prop('disabled', true);
+            $('#results .entry:not(.template)').remove();
+            $('#blocker').removeClass('hidden');
+            secs = 0;
+            timer = setInterval(onTick, 1000);
+            onTick();
             $.post('/ajax/seo.php', data, onPost);
+        };
+
+        var onTick = function() {
+            $('#blocker span').text(secs + ' secs');
+            secs++;
         };
 
         return {
