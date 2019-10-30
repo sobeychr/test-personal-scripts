@@ -124,18 +124,40 @@ class CPageConfig extends BaseConfig
 
     private function setSeo():void
     {
+        /*
         $sort = ['bydate', 'mostrated', 'mostviewed', 'title', 'relevant'];
         $time = ['alltime', 'thisweek', 'thismonth', 'thisyear', 'upcoming'];
-
-        $linkRoot = 'videos/all-sites/all-pornstars/all-categories/{time}/{sort}/';
-        $links = [];
+        $linkVideoRoot = 'videos/all-sites/all-pornstars/all-categories/{time}/{sort}/';
+        $linksVideo = ['videos'];
         foreach($sort as $s)
         {
             foreach($time as $t)
             {
-                $links[] = fReplace($linkRoot, ['{time}' => $t, '{sort}' => $s]);
+                $linksVideo[] = fReplace($linkVideoRoot, ['{time}' => $t, '{sort}' => $s]);
             }
         }
+
+        $sort = ['bydate', 'mostrated', 'mostviewed', 'title', 'relevant'];
+        $linkModelRoot = 'pornstars/all-pornstars/female/all-categories/any/{sort}/';
+        $linksModel = ['pornstars'];
+        foreach($sort as $s)
+        {
+            $linksModel[] = fReplace($linkModelRoot, ['{sort}' => $s]);
+        }
+        */
+       
+        $linksVideo = $this->_setSeoLinks(
+            'videos',
+            'videos/all-sites/all-pornstars/all-categories/{time}/{sort}/',
+            ['bydate', 'mostrated', 'mostviewed', 'title', 'relevant'],
+            ['alltime', 'thisweek', 'thismonth', 'thisyear', 'upcoming']
+        );
+
+        $linksModel = $this->_setSeoLinks(
+            'pornstars',
+            'pornstars/all-pornstars/female/all-categories/any/{sort}/',
+            ['recent', 'bypopularity', 'byfollowed', 'numberofvideos', 'name']
+        );
 
         $config = [
             'seo' => [
@@ -144,11 +166,28 @@ class CPageConfig extends BaseConfig
                     'http://www-brazzers-stage1.brazzers.com/',
                     'http://www-brazzersnetwork-stage1.brazzers.com/',
                 ],
-                'links' => $links,
+                'links' => array_merge($linksVideo, $linksModel),
             ],
         ];
 
         $this->setConfig($config);
+    }
+    private function _setSeoLinks(string $root, string $url, array $sort=[], array $time=[]):array
+    {
+        $arr = [$root];
+        foreach($sort as $s)
+        {
+            if(count($time) > 0) {
+                foreach($time as $t)
+                {
+                    $arr[] = fReplace($url, ['{time}' => $t, '{sort}' => $s]);
+                }
+            }
+            else {
+                $arr[] = fReplace($url, ['{sort}' => $s]);
+            }
+        }
+        return $arr;
     }
 
     private function setTgp():void

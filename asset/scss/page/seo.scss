@@ -63,17 +63,22 @@ $btnSendColor1: #C232D9;
         }
     }
 
-    #domain,
-    #list input {
+    #domain {
         max-width: 550px;
         width: 100%;
     }
 
-    #list input {
-        margin-top: 10px;
+    #list {
+        max-width: 550px;
 
-        &.template {
-            display: none;
+        input {
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+
+            &.template {
+                display: none;
+            }
         }
     }
 

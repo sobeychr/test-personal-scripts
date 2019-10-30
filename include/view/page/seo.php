@@ -11,7 +11,6 @@ $links = CCore::config(['page', 'seo', 'links']);
 $linksHtml = array_map(function(string $v):string {
     return '<input type="text" value="' . $v . '" placeholder="// URL">';
 }, $links);
-$linksHtml = [];
 ?>
 <main class='main'>
     <div id='blocker' class='hidden'>
