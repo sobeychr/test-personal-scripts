@@ -1,0 +1,12 @@
+ol li {
+    margin: 2px 0;
+    padding: 1px 0;
+
+    &:nth-child(3n) {
+        background: #262626;
+    }
+
+    &:hover {
+        background: #363636;
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Localhost - upload",
+    "icon": "upload",
+    "css": [
+        "default",
+        "page/upload"
+    ],
+    "js": [
+        "jquery",
+        "page/upload"
+    ]
+}

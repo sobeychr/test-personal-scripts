@@ -60,6 +60,7 @@ class CPageConfig extends BaseConfig
                     'seo',
                     'testlink',
                     'timestamp',
+                    'upload',
                 ],
             ],
         ];

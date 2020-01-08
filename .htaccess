@@ -19,5 +19,6 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_URI} !^/ajax/
     RewriteCond %{REQUEST_URI} !^/asset/
+    RewriteCond %{REQUEST_URI} !^/upload-files/
     RewriteRule ^ index.php [L]
 </IfModule>
