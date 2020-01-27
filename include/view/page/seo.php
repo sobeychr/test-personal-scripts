@@ -2,11 +2,6 @@
 
 use App\CCore;
 
-$domains = CCore::config(['page', 'seo', 'domains']);
-$domainsHtml = array_map(function(string $v):string {
-    return '<option value="' . $v . '"/>';
-}, $domains);
-
 $links = CCore::config(['page', 'seo', 'links']);
 $linksHtml = array_map(function(string $v):string {
     return '<input type="text" value="' . $v . '" placeholder="// URL">';
@@ -18,11 +13,7 @@ $linksHtml = array_map(function(string $v):string {
     </div>
 
     <form action='' method='post'>
-        <input type='text' value='' id='domain' placeholder='// domain' list='domains'/>
-        <datalist id='domains'>
-            <?= implode('', $domainsHtml); ?>
-        </datalist>
-
+        <input type='text' value='' id='domain' placeholder='// domain'/>
         <div class='urls'>
             <p class='buttons'>
                 <button type='button' class='add'>Add</button>

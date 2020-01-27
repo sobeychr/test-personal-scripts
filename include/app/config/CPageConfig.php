@@ -16,7 +16,6 @@ class CPageConfig extends BaseConfig
         $this->setIndex();
         $this->setParser();
         $this->setSeo();
-        $this->setTgp();
     }
 
     private function setDefault():void
@@ -116,7 +115,6 @@ class CPageConfig extends BaseConfig
                         ['off', 'decode'],
                     ],
                 ],
-                'probiller' => 'https://probiller.com/mcp/tools/crypt',
             ],
         ];
 
@@ -125,28 +123,6 @@ class CPageConfig extends BaseConfig
 
     private function setSeo():void
     {
-        /*
-        $sort = ['bydate', 'mostrated', 'mostviewed', 'title', 'relevant'];
-        $time = ['alltime', 'thisweek', 'thismonth', 'thisyear', 'upcoming'];
-        $linkVideoRoot = 'videos/all-sites/all-pornstars/all-categories/{time}/{sort}/';
-        $linksVideo = ['videos'];
-        foreach($sort as $s)
-        {
-            foreach($time as $t)
-            {
-                $linksVideo[] = fReplace($linkVideoRoot, ['{time}' => $t, '{sort}' => $s]);
-            }
-        }
-
-        $sort = ['bydate', 'mostrated', 'mostviewed', 'title', 'relevant'];
-        $linkModelRoot = 'pornstars/all-pornstars/female/all-categories/any/{sort}/';
-        $linksModel = ['pornstars'];
-        foreach($sort as $s)
-        {
-            $linksModel[] = fReplace($linkModelRoot, ['{sort}' => $s]);
-        }
-        */
-       
         $linksVideo = $this->_setSeoLinks(
             'videos',
             'videos/all-sites/all-pornstars/all-categories/{time}/{sort}/',
@@ -162,11 +138,6 @@ class CPageConfig extends BaseConfig
 
         $config = [
             'seo' => [
-                'domains' => [
-                    'http://www.brazzers.spartan-brazzers-v3.vm/',
-                    'http://www-brazzers-stage1.brazzers.com/',
-                    'http://www-brazzersnetwork-stage1.brazzers.com/',
-                ],
                 'links' => array_merge($linksVideo, $linksModel),
             ],
         ];
@@ -189,24 +160,5 @@ class CPageConfig extends BaseConfig
             }
         }
         return $arr;
-    }
-
-    private function setTgp():void
-    {
-        $config = [
-            'tgp' => [
-                'links' => [
-                    'https://www.rk.com/tour/video/watch/3212755/stood-up/',
-                    'https://www.rk.com/tour/video/watch/3258404/worship-me/',
-                    'https://www.rk.com/tour/video/watch/3462849/eager-emily/',
-                    'https://www.rk.com/tour/video/watch/2572039/vip-booty/',
-                    'https://www.rk.com/tour/video/watch/3318491/big-titty-workout/',
-                    'https://www.rk.com/tour/video/watch/3151666/too-thicc-for-skinny-jeans/',
-                    'https://www.rk.com/tour/video/watch/3348903/selling-real-asstate/',
-                ],
-            ],
-        ];
-
-        $this->setConfig($config);
     }
 }
